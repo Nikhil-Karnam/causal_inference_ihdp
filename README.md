@@ -47,7 +47,11 @@ across all participants, $b_1$ is the average coefficient. therefore, $b_1$ is t
 
 for a non average person, their treatment effect will be $b_1$ + some deviation in $s$. you are simply taking $b_1$ and applying an addition or subtraction to it. how much does $s-s_{mean}$ change $b_1$? that depends on your value of $b_2$. if $b_2$ is high, it is going to amplify the change for all individuals. an above average $s$ will lead to a higher addition to $b_1$, and a below average $s$ will lead to a higher subtraction from $b_1$. we can see that $b_2$ is essentially modulating the spread of $s$ before it gets passed onto $b_1$. a high $b_2$ increases the spread and a low $b_2$ squishes the spread. now $b_2$ is a regression coefficient. think of the role of regression. it is to choose a value of $b_2$ such that the prediction on outcome $Y$ has low residual error. if it chooses a $b_2$ of 1, it is saying that the spread of $s$ does not need to change in order to best predict $Y$. if $b_2$ is between 0 and 1, it is saying the original spread is too high and nerfing it will make it a better predictor of $Y$. if $b_2 > 1$, it is saying the original spread is too little and needs to be buffed. in summary, $b_2$ is determining whether the spread of $s$ is on the right scale to predict $Y$.
 
-now look at this cool trick. we know that the coefficient is the linear approximation of treatment effect. we know that $b_1$ is the linear approximation of average treatment effect. $c = b_1 + b_2(s-s_{mean})$. therefore,
+now look at this cool trick. we know that the coefficient is the linear approximation of treatment effect. we know that $b_1$ is the linear approximation of average treatment effect.
+
+$$c = b_1 + b_2(s-s_{mean})$$
+
+therefore,
 
 $$\text{blp treatment effect} = \text{blp average treatment effect} + b_2(s-s_{mean})$$
 
