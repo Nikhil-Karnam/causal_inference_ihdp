@@ -1,7 +1,7 @@
 ### this readme contains my intuitive understanding and derivation of techniques i used in this project. not everything is written up, i'm still working on it!
 
 
-in causal inference treatment effect is defined an individual's potential outcome when treated ($Y_1$) - the potential outcome when untreated ($Y_0$). ATE (average treatment effect) is $Y_1 - Y_0$ averaged across everyone. and CATE (conditional average treatment effect) is averaged across people who non negotiably share a certain trait or exact set of traits $Z$. "for people exactly like this, what is the average $y_1 - y_0$." the proper cate procedure really is about averaging within the defined group, but models don't do this, they estimate it by fitting a function of $Z$.
+in causal inference treatment effect is defined an individual's potential outcome when treated ($Y_1$) - the potential outcome when untreated ($Y_0$). ATE (average treatment effect) is $Y_1 - Y_0$ averaged across everyone. and CATE (conditional average treatment effect) is averaged across people who non negotiably share a certain trait or exact set of traits $Z$. "for people exactly like this, what is the average $Y_1 - Y_0$." the proper cate procedure really is about averaging within the defined group, but models don't do this, they estimate it by fitting a function of $Z$.
 
 ## best linear predictor (blp)
 
