@@ -92,7 +92,7 @@ the other interpretation is that you're doing $T$ minus predicted $T$ using $x$,
 
 ### about extra terms you may see in blp
 
-in the given standard equation, $\epsilon$ is whatever error between prediction and outcome that is not explained by the 2 treatment terms. let's take, for example, wealth as a variable. wealth is something that can predict $Y$ independent of treatment, independent of the experiment. if we throw that in there, we have a third thing alongside treatment terms that helps predict $Y$, so the "unexplained" value $\epsilon$ decreases. oh, there's another variable: weight. throw that one in there too. oh wait, we have 25 covariates we can throw in. 25 opportunities to help reduce $\epsilon$. why does this matter? well, if we reduce $\epsilon$, we can reduce the variance of the coefficient $b$ of the treatment terms. look at the variance formula:
+in the base equation, $\epsilon$ is whatever error between prediction and outcome that is not explained by the 2 treatment terms. let's take, for example, wealth as a variable. wealth is something that can predict $Y$ independent of treatment, independent of the experiment. if we throw that in there, we have a third thing alongside treatment terms that helps predict $Y$, so the "unexplained" value $\epsilon$ decreases. oh, there's another variable: weight. throw that one in there too. oh wait, we have 25 covariates we can throw in. 25 opportunities to help reduce $\epsilon$. why does this matter? well, if we reduce $\epsilon$, we can reduce the variance of the coefficient $b$ of the treatment terms. look at the variance formula:
 
 $$\text{var}(b) \approx \frac{\epsilon/(n-k)}{n \cdot \text{variance of whatever } b \text{ is describing}}$$
 
