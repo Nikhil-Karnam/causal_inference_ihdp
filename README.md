@@ -96,7 +96,7 @@ in the base equation, $\epsilon$ is whatever error between prediction and outcom
 
 $$\text{var}(b) \approx \frac{\epsilon/(n-k)}{n \cdot \text{variance of whatever } b \text{ is describing}}$$
 
-reducing the numerator's $\epsilon$ will reduce the overall variance of coefficient $b$. however, there is a catch with adding too many variables. it can increase $k$, which is the number of covariates being estimated. that can increase variance of $b$. so reducing variance on $b$ is about finding the right balance between predictive power and too many degrees of freedom $k$. a covariate that does not explain $Y$ well will not reduce $\epsilon$ by much, but it will cost you by increasing $k$.
+reducing the numerator's $\epsilon$ will reduce the overall variance of coefficient $b$. however, there is a catch with adding too many variables. it can increase $k$, which is the number of covariates being estimated. that can increase variance of $b$. so reducing the variance of $b$ is about finding the right balance between predictive power and too many degrees of freedom $k$. a covariate that does not explain $Y$ well will not reduce $\epsilon$ by much, but it will cost you by increasing $k$.
 
 adding terms to the regression to reduce variance or decrease confounding is called adding a "nuisance parameter". in blp, a very useful one to add is a prediction of $Y_0$. this encapsulates the predictive power of all covariates into one term. many rcts may also use ANCOVA to add in covariates as "precision variables" to improve variance. while the experiments are randomized and the covariates don't affect the treatment, they may help predict the outcome.
 
