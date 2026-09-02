@@ -1,7 +1,9 @@
-### this readme contains my intuitive understanding and derivation of techniques i used in this project. not everything is written up, i'm still working on it!
+an implementation and evaluation of two CATE estimators — dragonnet (a multi-task neural network, PyTorch) and an x-learner with cross-fitting (scikit-learn) — benchmarked on the semi-synthetic ihdp dataset. targeted regularization reduced dragonnet's PEHE by 10.5% over the base model, and both models beat a naive baseline. treatment effect heterogeneity was analyzed using the BLP / GATES / CLAN framework from Chernozhukov et al., pooled across 100 replications using monte varlo approximation and wilcoxon signed-rank test.
+
+### below is my completely intuitive understanding and derivation of the techniques i used in this project (still a work in progress)
 
 
-in causal inference treatment effect is defined an individual's potential outcome when treated ($Y_1$) - the potential outcome when untreated ($Y_0$). ATE (average treatment effect) is $Y_1 - Y_0$ averaged across everyone. and CATE (conditional average treatment effect) is averaged across people who non negotiably share a certain trait or exact set of traits $Z$. "for people exactly like this, what is the average $Y_1 - Y_0$." the proper cate procedure really is about averaging within the defined group, but models don't do this, they estimate it by fitting a function of $Z$.
+in causal inference, treatment effect is defined an individual's potential outcome when treated ($Y_1$) - the potential outcome when untreated ($Y_0$). ATE (average treatment effect) is $Y_1 - Y_0$ averaged across everyone. and CATE (conditional average treatment effect) is averaged across people who non negotiably share a certain trait or exact set of traits $Z$. "for people exactly like this, what is the average $Y_1 - Y_0$." the proper cate procedure really is about averaging within the defined group, but models don't do this, they estimate it by fitting a function of $Z$.
 
 ## best linear predictor (blp)
 
@@ -61,9 +63,9 @@ looking at this form makes it more intuitive what the regression is evaluating. 
 
 ### why T-p and not T?
 
-let's start from the ground up. there are 2 groups, control and treatment. let's say there is a variable $x$ that is overrepresented in the treatment group that also happens to give an advantage to the treatment group in producing the outcome. a basic way to compare the effects of the treatment in rct is to measure the difference between the control group's outcome and treated group's outcome. but here, that difference includes both the effect of the treatment + the advantage that the treatment group's characteristic provides.
+let's start from the ground up. there are 2 groups, control and treatment. let's say there is a variable $x$ that is overrepresented in the treatment group that also happens to provide an advantage to the treatment group in producing the outcome. a basic way to compare the effects of the treatment in rct is to measure the difference between the control group's outcome and treated group's outcome. but here, that difference includes both the effect of the treatment + the advantage that the treatment group's characteristic provides.
 
-a natural solution is not to remove the advantage, but to have it equally represented in both groups. if both share the same advantage output, a difference in the group's outcomes is not skewed by the advantage. scan both control and treatment group for the presence of the advantage, and observe the distribution. if the treatment side has 9 participants with the advantage and the control side has only 1 with the advantage, their voices must be in a ratio of 1:9 for equal representation.
+a natural solution is not to remove the advantage, but to have it equally represented in both groups. if both groups get the same advantage, a difference in the groups' outcomes is not skewed by the advantage... unless one group systematically harnesses the advantage differently due to some other variable, but let's assume for simplicity that that is not an issue. scan both control and treatment group for the presence of the advantage, and observe the distribution. if the treatment side has 9 participants with the advantage and the control side has only 1 with the advantage, their voices must be in a ratio of 1:9 for equal representation.
 
 if you remember, treatment effect can be represented as the slope of the regression line when regressing $Y$ on $T-p$ for a group of people. the math works even without a $-p$.
 
