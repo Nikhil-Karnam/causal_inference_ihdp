@@ -61,7 +61,7 @@ $$\text{blp treatment effect} - \text{blp average treatment effect} = b_2(s-s_{m
 
 looking at this form makes it more intuitive what the regression is evaluating. imagine we have our own outside estimated treatment effects for each individual and plug them into $s$. the left side represents what the spread should look like under linear regression. the right side is our own spread. if $b_2 = 1$, it tells us our spread is on the same scale as what blp wants in order to reduce residual error from real $Y$. in conclusion, blp is simply one way to validate the scale of spread of some external individual treatment effect scores, usually presented as estimated CATEs. it is validating their claimed level of heterogeneity.
 
-### why T-p and not T?
+### why $T-p$ and not merely $T$?
 
 let's start from the ground up. there are 2 groups, control and treatment. let's say there is a variable $x$ that is overrepresented in the treatment group and that also happens to provide an advantage to the treatment group in producing the outcome. a basic way to compare the effects of the treatment in an rct is to measure the difference between the control group's outcome and the treated group's outcome. but here, that difference includes both the effect of the treatment and the advantage that the treatment group's characteristic provides.
 
@@ -90,7 +90,7 @@ the other method of forcing equal representation within a type group, instead of
 
 the other interpretation is that you're doing $T$ minus predicted $T$ using $x$, which strips the part of $T$ that is explained by $x$. this isolates the change in $T$ that does not vary with $x$, in order to study the effect of that change in $T$ on $Y$. this is the same idea behind DML. both $Y$ and $T$ are regressed on $x$ and stripped of the part that depends on $x$, and then clean $Y$ is regressed on clean $T$.
 
-### about extra terms
+### about extra terms you may see in blp
 
 in the given standard equation, $\epsilon$ is whatever error between prediction and outcome that is not explained by the 2 treatment terms. let's take, for example, wealth as a variable. wealth is something that can predict $Y$ independent of treatment, independent of the experiment. if we throw that in there, we have a third thing alongside treatment terms that helps predict $Y$, so the "unexplained" value $\epsilon$ decreases. oh, there's another variable: weight. throw that one in there too. oh wait, we have 25 covariates we can throw in. 25 opportunities to help reduce $\epsilon$. why does this matter? well, if we reduce $\epsilon$, we can reduce the variance of the coefficient $b$ of the treatment terms. look at the variance formula:
 
