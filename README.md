@@ -25,7 +25,7 @@ $$Y = c(T-p) + \epsilon$$
 
 where $c$ is the coefficient of $(T-p)$. $Y$ is the outcome and $T$ is treatment status (0 or 1). each individual has their own $s$ and $p$ values, which are plugged into this equation. $\epsilon$ represents error, the difference between the regression's prediction of $Y$ and the real outcome $Y$.
 
-### showing that coefficient c represents the treatment effect
+### showing that coefficient $c$ represents the treatment effect
 
 the best this equation can do to define an individual is use their $T$, $s$, and $p$ values. so treat the individual here as a configuration of these variables' values. if $T$ is hypothetically set to 1, then output $Y$ answers "what does this individual look like when treated?" this is nothing but $Y_1$ for that individual. if $T$ is set to 0, output $Y$ answers "what does this individual look like at baseline?", which is $Y_0$.
 
